@@ -1,3 +1,5 @@
+<script setup>
+import TheWelcome from "../components/TheWelcome.vue";
 const cart = [
   {
     id: 1,
@@ -44,4 +46,25 @@ const cart = [
   },
 ];
 
-export let c = cart;
+function makecart() {
+  document.cart.innerHTML = "";
+  cart
+    .filter((item) => item.image)
+    .foreach((item) => {
+      cart.insertAdjacentHTML(
+        "beforeend",
+        `<div class="flex">
+  <img class="img" src=${item.image}
+  <p>${item.name}</p>
+  </div>`
+      );
+    });
+}
+makecart();
+</script>
+
+<template>
+  <main>
+    <section class="cart"></section>
+  </main>
+</template>
